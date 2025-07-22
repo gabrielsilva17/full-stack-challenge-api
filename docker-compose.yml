@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    image: one-api
+    container_name: one-api
+    restart: unless-stopped
+    ports:
+      - "9002:80"
+    volumes:
+      - ./code:/var/www/html
+    environment:
+      APP_ENV: local
+      APP_DEBUG: 'true'
+      APP_URL: http://localhost:9002
+      L5_SWAGGER_GENERATE_ALWAYS: 'true'
+      L5_SWAGGER_CONST_HOST: http://localhost:9002
+      QUEUE_CONNECTION: database
+    depends_on:
+      - db
+    networks:
+      - gateway_net
+
+  db:
+    image: mysql:8.0
+    container_name: one-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: onetestmusical
+      MYSQL_USER: oneRpm
+      MYSQL_PASSWORD: "oneRpm@20%25"
+    ports:
+      - "3309:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - gateway_net
+    healthcheck:
+      test: ["CMD","mysqladmin","ping","-h","localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+networks:
+  gateway_net:
+    external: true
+
+volumes:
+  db_data:

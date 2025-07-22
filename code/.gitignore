@@ -1,0 +1,68 @@
+# ┌─────────────────────────┐
+# │ Laravel Environment    │
+# └─────────────────────────┘
+.env
+.env.*.backup
+.env.production
+.env.local
+
+# ┌─────────────────────────┐
+# │ Vendor / Dependencies  │
+# └─────────────────────────┘
+/vendor/
+/node_modules/
+
+# ┌─────────────────────────┐
+# │ Build / Cache / Logs    │
+# └─────────────────────────┘
+/public/build/
+/public/hot/
+/public/uploads/
+/public/storage
+/storage/*.key
+/.phpunit.cache
+/.phpunit.result.cache
+/docker-compose.override.yml
+storage/*.log
+storage/debugbar/*.php
+bootstrap/cache/*
+
+# ┌─────────────────────────┐
+# │ IDE / Editor            │
+# └─────────────────────────┘
+# VS Code
+/.vscode/
+/.history/
+/*.code-workspace
+
+# PhpStorm, IntelliJ, etc.
+/.idea/
+/*.iml
+/.idea_modules/
+/out/
+/.svn/
+/nbproject/
+/.project
+.classpath
+.settings/
+
+# Fleet
+/.fleet/
+
+# ┌─────────────────────────┐
+# │ Node / NPM / Yarn       │
+# └─────────────────────────┘
+npm-debug.log*
+yarn-error.log*
+
+# ┌─────────────────────────┐
+# │ Homestead / Vagrant     │
+# └─────────────────────────┘
+Homestead.json
+Homestead.yaml
+.vagrant/
+
+# ┌─────────────────────────┐
+# │ Miscellaneous           │
+# └─────────────────────────┘
+auth.json

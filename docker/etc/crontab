@@ -1,0 +1,2 @@
+* * * * * /usr/local/bin/php /var/www/artisan schedule:run >> /var/log/cron/cron.log
+# Do not remove the empty line at the end of this file. It is necessary to run cron job
